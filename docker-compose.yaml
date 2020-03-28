@@ -1,0 +1,33 @@
+version: "3.3"
+services:
+  postgres:
+    image: arm32v7/postgres
+    container_name: "postgres"
+    hostname: "postgres"
+    environment:
+      - POSTGRES_USER=ola
+      - POSTGRES_PASSWORD=password
+      - POSTGRES_DB=mydb
+    ports:
+      - "5432:5432"
+    volumes:
+      - ./postgres:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD", "curl", "-sI", "http://127.0.0.1:5432/ping"]
+      interval: 30s
+      timeout: 1s
+      retries: 24
+
+  homeassistant:
+    image: homeassistant/raspberrypi4-homeassistant
+    volumes:
+      - ./homeassistant:/config
+    restart: on-failure
+    depends_on:
+      - postgres
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://127.0.0.1:8123"]
+      interval: 30s
+      timeout: 10s
+      retries: 6
+    network_mode: host
