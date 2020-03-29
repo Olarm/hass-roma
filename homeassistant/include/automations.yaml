@@ -1,0 +1,44 @@
+- alias: Endret IP addresse
+  hide_entity: true
+  trigger:
+    platform: state
+    entity_id: sensor.ip
+  action:
+    service: scripts.telegram_ip_fornyet
+
+- alias: gi IP addresse
+  trigger:
+    platform: event
+    event_type: telegram_command
+    event_data:
+      command: '/ip'
+  action:
+    - service: telegram_bot.send_message
+      data_template:
+        target: '{{ trigger.event.data.user_id }}'
+        message: '{{ states.sensor.ip_addresse.state }}'
+
+- alias: list banned
+  trigger:
+    platform: event
+    event_type: telegram_command
+    event_data:
+      command: '/banned'
+  action:
+    - service: telegram_bot.send_message
+      data_template:
+        target: '{{ trigger.event.data.user_id }}'
+        message: '{{ trigger.event.data.command }}'
+   
+
+- alias: Login Failure
+  trigger:
+    platform: state
+    entity_id: persistent_notification.httplogin
+  condition:
+    condition: template
+    value_template: "{{ trigger.to_state.state != off }}"
+  action:
+    service: notify.ola
+    data:
+      message: "Failed Home Assistant login attempt!"

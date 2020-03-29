@@ -1,0 +1,34 @@
+- platform: systemmonitor
+  scan_interval: 60
+  resources:
+    - type: disk_free
+      arg: /
+    - type: disk_use_percent
+      arg: /
+    - type: disk_use
+      arg: /
+    - type: memory_use_percent
+    - type: memory_free
+    - type: load_1m
+    - type: load_5m
+    - type: load_15m
+    - type: processor_use
+    - type: last_boot
+
+- platform: command_line
+  scan_interval: 120
+  name: IP addresse
+  command: "curl ifconfig.me"
+
+- platform: template
+  sensors:
+    mb_uploaded:
+      friendly_name: "MegaByte opplastet"
+      unit_of_measurement: 'MB'
+      value_template: "{{ (states('sensor.ubuntu_router_bytes_sent') | float / 1000000 ) | round(2) }}"
+    mb_downloaded:
+      friendly_name: "MegaByte nedlastet"
+      unit_of_measurement: 'MB'
+      value_template: "{{ (states('sensor.ubuntu_router_bytes_received') | float / 1000000 ) | round(2) }}"
+
+
