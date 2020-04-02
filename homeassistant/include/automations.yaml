@@ -42,3 +42,7 @@
     service: notify.ola
     data:
       message: "Failed Home Assistant login attempt!"
+  action:
+    service: notify.terje
+    data:
+      message: "Failed Home Assistant login attempt!"
