@@ -15,7 +15,7 @@ recorder:
 
 speedtestdotnet:
   scan_interval:
-    minutes: 2
+    minutes: 60
   monitored_conditions:
     - ping
     - download
