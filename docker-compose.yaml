@@ -1,13 +1,20 @@
 version: "3.3"
 services:
+
+  adminer:
+    image: arm32v7/adminer
+    restart: always
+    ports:
+      - 8080:8080
+
   postgres:
     image: arm32v7/postgres
     container_name: "postgres"
     hostname: "postgres"
     environment:
       - POSTGRES_USER=ola
+      - POSTGRES_DB=ola
       - POSTGRES_PASSWORD=password
-      - POSTGRES_DB=mydb
     ports:
       - "5432:5432"
     volumes:
@@ -22,6 +29,8 @@ services:
     image: homeassistant/raspberrypi4-homeassistant
     volumes:
       - ./homeassistant:/config
+    devices:
+      - /dev/ttyACM0:/dev/ttyACM0
     restart: on-failure
     depends_on:
       - postgres
