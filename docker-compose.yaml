@@ -11,6 +11,7 @@ services:
     image: arm32v7/postgres
     container_name: "postgres"
     hostname: "postgres"
+    restart: unless-stopped
     environment:
       - POSTGRES_USER=ola
       - POSTGRES_DB=ola
@@ -31,7 +32,7 @@ services:
       - ./homeassistant:/config
     devices:
       - /dev/ttyACM0:/dev/ttyACM0
-    restart: on-failure
+    restart: unless-stopped
     depends_on:
       - postgres
     healthcheck:
