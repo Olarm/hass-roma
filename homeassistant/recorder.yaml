@@ -1,0 +1,29 @@
+db_url: !secret db_url
+purge_interval: 1
+purge_keep_days: 14
+commit_interval: 5
+exclude:
+  entities:
+    - sensor.aeon_labs_zw100_multisensor_6_battery_level      
+    - sensor.aeon_labs_zw100_multisensor_6_battery_level_2 
+    - sensor.aeon_labs_zw100_multisensor_6_sourcenodeid
+    - sensor.aeon_labs_zw100_multisensor_6_sourcenodeid_2
+    - sensor.fibaro_system_fgs213_switch_exporting 
+    - sensor.fibaro_system_fgs213_switch_alarm_level
+    - sensor.fibaro_system_fgs213_switch_alarm_type
+    - sensor.thermofloor_as_heatit_thermostat_tf_056_exporting
+    - sensor.thermofloor_as_heatit_thermostat_tf_056_exporting_2
+    - sensor.thermofloor_as_heatit_thermostat_tf_056_exporting_3
+    - sensor.thermofloor_as_heatit_thermostat_tf_056_exporting_4
+    - sensor.thermofloor_as_heatit_thermostat_tf_056_exporting_5
+    - sensor.thermofloor_as_heatit_thermostat_tf_056_exporting_6
+    - sensor.thermofloor_as_heatit_thermostat_tf_056_external_sensor
+    - sensor.thermofloor_as_heatit_thermostat_tf_056_external_sensor_2
+    - sensor.thermofloor_as_heatit_thermostat_tf_056_external_sensor_3
+    - sensor.thermofloor_as_heatit_thermostat_tf_056_external_sensor_4
+    - sensor.thermofloor_as_heatit_thermostat_tf_056_external_sensor_5
+    - sensor.thermofloor_as_heatit_thermostat_tf_056_external_sensor_6
+    - sensor.thermofloor_as_heatit_thermostat_tf_056_external_sensor_7
+    - sensor.thermofloor_as_heatit_thermostat_tf_056_external_sensor_8
+    - sensor.thermofloor_as_heatit_thermostat_tf_056_external_sensor_9
+    - sensor.thermofloor_as_heatit_thermostat_tf_056_external_sensor_10
