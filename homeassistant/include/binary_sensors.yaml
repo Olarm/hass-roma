@@ -1,6 +1,8 @@
 - platform: command_line
   command: "bash /config/bash_scripts/online.sh"
   device_class: connectivity
+  scan_interval: 60
+  command_timeout: 45
   name: online
   payload_on: "online"
   payload_off: "offline"

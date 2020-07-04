@@ -34,3 +34,4 @@ scene: !include include/scenes.yaml
 sensor: !include include/sensors.yaml
 notify: !include include/notify.yaml
 binary_sensor: !include include/binary_sensors.yaml
+timer: !include include/timers.yaml

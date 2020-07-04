@@ -1,0 +1,5 @@
+router_short:
+  duration: '00:00:10'
+
+router_long:
+  duration: '00:05:00'
