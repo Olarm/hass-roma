@@ -1,0 +1,6 @@
+- platform: command_line
+  command: "bash /config/bash_scripts/online.sh"
+  device_class: connectivity
+  name: online
+  payload_on: "online"
+  payload_off: "offline"

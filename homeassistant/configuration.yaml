@@ -10,8 +10,7 @@ default_config:
 tts:
   - platform: google_translate
 
-recorder:
-  db_url: !secret db_url
+recorder: !include recorder.yaml
 
 speedtestdotnet:
   scan_interval:
@@ -34,3 +33,4 @@ script: !include include/scripts.yaml
 scene: !include include/scenes.yaml
 sensor: !include include/sensors.yaml
 notify: !include include/notify.yaml
+binary_sensor: !include include/binary_sensors.yaml
